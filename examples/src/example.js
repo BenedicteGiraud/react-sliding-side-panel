@@ -55,7 +55,7 @@ const App = () => {
       <SlidingPanel
         type={panelType}
         isOpen={openPanel}
-        onClose={() => setOpenPanel(false)}
+        backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
       >
         <div className='panel-container'>
