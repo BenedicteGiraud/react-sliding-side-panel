@@ -21,13 +21,7 @@ const App = () => {
   return (
     <div>
       <div>
-        <button
-          onClick={() => {
-            setOpenPanel(true);
-          }}
-        >
-          Left
-        </button>
+        <button onClick={() => setOpenPanel(true)}>Open</button>
       </div>
       <SlidingPanel
         type={'left'}
