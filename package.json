@@ -1,9 +1,10 @@
 {
   "name": "react-sliding-side-panel",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A sliding panel for React applications",
   "main": "./lib/index.js",
   "scripts": {
+    "clean": "rimraf lib",
     "build:js": "babel -s inline -d lib src",
     "build:css": "node scripts/buildCSS.js",
     "prepare": "npm run build:js && npm run build:css"

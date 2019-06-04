@@ -19,13 +19,12 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
+    path: __dirname + '/_gh-pages',
     filename: 'index.js'
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
-    contentBase: './dist',
+    contentBase: './_gh-pages',
     hot: true
   }
 };

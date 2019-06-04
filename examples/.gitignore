@@ -3,6 +3,7 @@
 
 # production
 /build
+_gh-pages
 
 # misc
 .DS_Store

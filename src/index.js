@@ -31,10 +31,10 @@ const SlidingPanel = ({ type, size, isOpen, onClose, children }) => {
   const horizontal = type === 'bottom' || type === 'top';
   return (
     <div>
-      <div className={isOpen ? 'sliding-panel-container' : ''}>
+      <div className={`sliding-panel-container ${isOpen ? 'active' : ''}`}>
         <CSSTransition
           in={isOpen}
-          timeout={1000}
+          timeout={500}
           classNames={`panel-container-${type}`}
           unmountOnExit
           onExited={() => onClose()}
