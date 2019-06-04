@@ -56,3 +56,4 @@ This component uses [CSSTransition](http://reactcommunity.org/react-transition-g
 - `onClose` - Similar to [onExit](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onExit)
 - `onClosing` - Similar to [onExiting](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onExiting)
 - `onClosed` - Similar to [onExited](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onExited)
+- `backdropClicked` - Callback called when the backdrop is clicked
