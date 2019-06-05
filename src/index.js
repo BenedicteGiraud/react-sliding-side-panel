@@ -26,7 +26,10 @@ const getPanelStyle = (type, size) => {
   };
 };
 
-const SlidingPanel = ({ type, size, isOpen, onClose, children }) => {
+const SlidingPanel = ({
+  type, size, isOpen, onOpen, onOpening, onOpened, onClose, onClosing, onClosed,
+  backdropClicked, children,
+}) => {
   const glassBefore = type === 'right' || type === 'bottom';
   const horizontal = type === 'bottom' || type === 'top';
   return (
@@ -37,7 +40,12 @@ const SlidingPanel = ({ type, size, isOpen, onClose, children }) => {
           timeout={500}
           classNames={`panel-container-${type}`}
           unmountOnExit
-          onExited={() => onClose()}
+          onEnter={(node, isAppearing) => onOpen(node, isAppearing)}
+          onEntering={(node, isAppearing) => onOpening(node, isAppearing)}
+          onEntered={(node, isAppearing) => onOpened(node, isAppearing)}
+          onExit={(node) => onClose(node)}
+          onExiting={(node) => onClosing(node)}
+          onExited={(node) => onClosed(node)}
           style={{ display: horizontal ? 'block' : 'flex' }}
         >
           <div>
@@ -45,7 +53,7 @@ const SlidingPanel = ({ type, size, isOpen, onClose, children }) => {
               <div
                 className='glass'
                 style={getPanelGlassStyle(type, size)}
-                onClick={() => onClose()}
+                onClick={(e) => backdropClicked(e)}
               />
             )}
             <div className='panel' style={getPanelStyle(type, size)}>
@@ -55,7 +63,7 @@ const SlidingPanel = ({ type, size, isOpen, onClose, children }) => {
               <div
                 className='glass'
                 style={getPanelGlassStyle(type, size)}
-                onClick={() => onClose()}
+                onClick={(e) => backdropClicked(e)}
               />
             )}
           </div>
@@ -66,16 +74,23 @@ const SlidingPanel = ({ type, size, isOpen, onClose, children }) => {
 };
 
 SlidingPanel.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   size: PropTypes.number,
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  children: PropTypes.element
+  onOpen: PropTypes.func,
+  onOpening: PropTypes.func,
+  onOpened: PropTypes.func,
+  onClose: PropTypes.func,
+  onClosing: PropTypes.func,
+  onClosed: PropTypes.func,
+  backdropClicked: PropTypes.func,
+  children: PropTypes.element,
 };
 
 SlidingPanel.defaultProps = {
   type: 'left',
-  size: 50
+  size: 50,
+  backdropClicked: () => null,
 };
 
 export default SlidingPanel;

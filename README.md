@@ -26,7 +26,6 @@ const App = () => {
       <SlidingPanel
         type={'left'}
         isOpen={openPanel}
-        onClose={() => setOpenPanel(false)}
         size={30}
       >
         <div>
@@ -48,4 +47,12 @@ Common props you may want to specify include:
 - `type` - left | right | top | bottom, specify the sliding panel position
 - `size` - number between 0 and 100, specify the sliding panel size in percentage of the page size
 - `isOpen` - boolean, open or close the sliding panel
-- `onClose` - function to provide to the panel to allow it to close itself
+
+This component uses [CSSTransition](http://reactcommunity.org/react-transition-group/css-transition) under the hood, so you can also specify the following props:
+
+- `onOpen` - Similar to [onEnter](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onEnter)
+- `onOpening` - Similar to [onEntering](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onEntering)
+- `onOpened` - Similar to [onEntered](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onEntered)
+- `onClose` - Similar to [onExit](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onExit)
+- `onClosing` - Similar to [onExiting](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onExiting)
+- `onClosed` - Similar to [onExited](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onExited)
