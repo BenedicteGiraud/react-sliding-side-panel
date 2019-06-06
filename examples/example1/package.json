@@ -1,0 +1,46 @@
+{
+  "name": "react-sliding-side-panel-example",
+  "version": "1.0.0",
+  "description": "React Sliding Panel Example",
+  "main": "index.js",
+  "homepage": "https://benedictegiraud.github.io/react-sliding-side-panel",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gh-pages:clean": "rimraf _gh-pages",
+    "gh-pages:build:js": "babel -s inline -d _gh-pages src",
+    "gh-pages:build:css": "node scripts/buildExamplesCSS.js",
+    "gh-pages:build:html": "babel dist --out-dir _gh-pages --copy-files",
+    "gh-pages:build": "npm run gh-pages:build:js && npm run gh-pages:build:css && npm run gh-pages:build:html",
+    "build": "webpack --config ./webpack-prod.config.js --mode production",
+    "publish-demo": "npm run gh-pages:build:html && npm run build && npm run deploy",
+    "deploy": "gh-pages -d _gh-pages"
+  },
+  "author": "Benedicte Giraud",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "clean-css": "^4.2.1",
+    "css-loader": "^2.1.1",
+    "gh-pages": "^2.0.1",
+    "react-hot-loader": "^4.9.0",
+    "rimraf": "^2.6.3",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-sliding-side-panel": "^1.0.5"
+  }
+}
