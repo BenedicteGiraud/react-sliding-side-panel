@@ -7,12 +7,12 @@ const App = () => {
   const [panelType, setPanelType] = useState('left');
   const [panelSize, setPanelSize] = useState(30);
   return (
-    <div className='example-container'>
-      <div className='form-container'>
+    <div className="example-container">
+      <div className="form-container">
         <div>
           <label>width (in %)</label>
           <input
-            type='number'
+            type="number"
             value={panelSize}
             onChange={({ target }) => setPanelSize(target.value)}
           />
@@ -55,12 +55,12 @@ const App = () => {
       <SlidingPanel
         type={panelType}
         isOpen={openPanel}
-        onClose={() => setOpenPanel(false)}
+        backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
       >
-        <div className='panel-container'>
+        <div className="panel-container">
           <div>My Panel Content</div>
-          <button className='close-button' onClick={() => setOpenPanel(false)}>
+          <button className="close-button" onClick={() => setOpenPanel(false)}>
             close
           </button>
         </div>
