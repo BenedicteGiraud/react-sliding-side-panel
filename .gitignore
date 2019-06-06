@@ -31,3 +31,4 @@ package-lock.json
 
 .DS_Store
 _gh-pages
+examples/src
