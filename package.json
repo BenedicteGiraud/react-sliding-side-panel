@@ -2,12 +2,13 @@
   "name": "react-sliding-side-panel",
   "version": "1.0.5",
   "description": "A sliding panel for React applications",
-  "main": "./lib/index.js",
+  "main": "./lib/main.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build:js": "babel -s inline -d lib src",
-    "build:css": "node scripts/buildCSS.js",
-    "prepare": "npm run build:js && npm run build:css"
+    "build": "webpack --mode=production",
+    "lint": "eslint src/*.jsx",
+    "prepare": "npm run test && npm run build",
+    "test": "true"
   },
   "files": [
     "lib",
@@ -35,26 +36,26 @@
   },
   "homepage": "https://github.com/BenedicteGiraud/react-sliding-side-panel#readme",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "babel-preset-airbnb": "^3.2.1",
-    "chai": "^4.2.0",
-    "clean-css": "^4.2.1",
-    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
     "fs": "0.0.1-security",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
-    "rimraf": "^2.6.3"
+    "mini-css-extract-plugin": "^0.7.0",
+    "rimraf": "^2.6.3",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.2"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-transition-group": "^4.1.0"
   }
 }
