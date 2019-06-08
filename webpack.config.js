@@ -11,7 +11,7 @@ const plugins = [
 
 const config = {
     entry: [
-        path.resolve(__dirname, 'src', 'index.js'),
+        path.resolve(__dirname, 'src', 'index.jsx'),
         path.resolve(__dirname, 'src', 'index.css'),
     ],
     output: {
