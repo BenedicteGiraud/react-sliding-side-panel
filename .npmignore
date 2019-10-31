@@ -10,6 +10,7 @@ package-lock.json
 # project files
 src
 test
+scripts
 examples
 CHANGELOG.md
 .gitignore
