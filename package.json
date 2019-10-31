@@ -1,14 +1,14 @@
 {
   "name": "react-sliding-side-panel",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "A sliding panel for React applications",
-  "main": "./lib/main.js",
+  "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "webpack --mode=production",
-    "lint": "eslint src/*.jsx",
-    "prepare": "npm run test && npm run build",
-    "test": "true"
+    "build:js": "babel -s inline -d lib src",
+    "build:css": "node scripts/buildCSS.js",
+    "build": "npm run clean && npm run build:js && npm run build:css",
+    "lint": "eslint src/*.jsx"
   },
   "files": [
     "lib",
@@ -53,6 +53,8 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
+    "@babel/cli": "^7.6.4",
+    "clean-css": "^4.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

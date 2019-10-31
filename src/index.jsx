@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import './index.css';
 
 const getPanelGlassStyle = (type, size) => {
   const horizontal = type === 'bottom' || type === 'top';
@@ -26,8 +27,18 @@ const getPanelStyle = (type, size) => {
 };
 
 const SlidingPanel = ({
-  type, size, isOpen, onOpen, onOpening, onOpened, onClose, onClosing, onClosed,
-  backdropClicked, children,
+  type,
+  size,
+  panelClassName,
+  isOpen,
+  onOpen,
+  onOpening,
+  onOpened,
+  onClose,
+  onClosing,
+  onClosed,
+  backdropClicked,
+  children,
 }) => {
   const glassBefore = type === 'right' || type === 'bottom';
   const horizontal = type === 'bottom' || type === 'top';
@@ -56,7 +67,7 @@ const SlidingPanel = ({
               />
             )}
             <div className="panel" style={getPanelStyle(type, size)}>
-              <div className="panel-content">{children}</div>
+              <div className={`panel-content ${panelClassName || ''}`}>{children}</div>
             </div>
             {!glassBefore && (
               <div
@@ -75,6 +86,7 @@ const SlidingPanel = ({
 SlidingPanel.propTypes = {
   type: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   size: PropTypes.number,
+  panelClassName: PropTypes.string,
   isOpen: PropTypes.bool.isRequired,
   onOpen: PropTypes.func,
   onOpening: PropTypes.func,
@@ -89,6 +101,7 @@ SlidingPanel.propTypes = {
 SlidingPanel.defaultProps = {
   type: 'left',
   size: 50,
+  panelClassName: '',
   onOpen: () => null,
   onOpening: () => null,
   onOpened: () => null,

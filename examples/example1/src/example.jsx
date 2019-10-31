@@ -10,8 +10,9 @@ const App = () => {
     <div className="example-container">
       <div className="form-container">
         <div>
-          <label>width (in %)</label>
+          <label htmlFor="width_input">width (in %)</label>
           <input
+            name="width_input"
             type="number"
             value={panelSize}
             onChange={({ target }) => setPanelSize(target.value)}
@@ -19,6 +20,7 @@ const App = () => {
         </div>
         <div>
           <button
+            type="button"
             onClick={() => {
               setPanelType('left');
               setOpenPanel(true);
@@ -27,6 +29,7 @@ const App = () => {
             Left
           </button>
           <button
+            type="button"
             onClick={() => {
               setPanelType('right');
               setOpenPanel(true);
@@ -35,6 +38,7 @@ const App = () => {
             Right
           </button>
           <button
+            type="button"
             onClick={() => {
               setPanelType('top');
               setOpenPanel(true);
@@ -43,6 +47,7 @@ const App = () => {
             Top
           </button>
           <button
+            type="button"
             onClick={() => {
               setPanelType('bottom');
               setOpenPanel(true);
@@ -57,10 +62,11 @@ const App = () => {
         isOpen={openPanel}
         backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
+        panelClassName="additional-class"
       >
         <div className="panel-container">
           <div>My Panel Content</div>
-          <button className="close-button" onClick={() => setOpenPanel(false)}>
+          <button type="button" className="close-button" onClick={() => setOpenPanel(false)}>
             close
           </button>
         </div>

@@ -50,6 +50,7 @@ Common props you may want to specify include:
 
 This component uses [CSSTransition](http://reactcommunity.org/react-transition-group/css-transition) under the hood, so you can also specify the following props:
 
+- `panelClassName` - an optional additional classname for the panel content
 - `onOpen` - Similar to [onEnter](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onEnter)
 - `onOpening` - Similar to [onEntering](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onEntering)
 - `onOpened` - Similar to [onEntered](http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onEntered)
