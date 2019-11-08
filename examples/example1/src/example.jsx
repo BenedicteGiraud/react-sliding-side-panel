@@ -10,13 +10,15 @@ const App = () => {
     <div className="example-container">
       <div className="form-container">
         <div>
-          <label htmlFor="width_input">width (in %)</label>
-          <input
-            name="width_input"
-            type="number"
-            value={panelSize}
-            onChange={({ target }) => setPanelSize(target.value)}
-          />
+          <label htmlFor="width_input">
+            width (in %)
+            <input
+              name="width_input"
+              type="number"
+              value={panelSize}
+              onChange={({ target }) => setPanelSize(target.value)}
+            />
+          </label>
         </div>
         <div>
           <button
