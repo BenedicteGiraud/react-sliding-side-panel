@@ -38,6 +38,7 @@ const SlidingPanel = ({
   onClosing,
   onClosed,
   backdropClicked,
+  noBackdrop,
   children,
 }) => {
   const glassBefore = type === 'right' || type === 'bottom';
@@ -59,7 +60,7 @@ const SlidingPanel = ({
           style={{ display: horizontal ? 'block' : 'flex' }}
         >
           <div>
-            {glassBefore && (
+            {!noBackdrop && glassBefore && (
               <div
                 className="glass"
                 style={getPanelGlassStyle(type, size)}
@@ -69,7 +70,7 @@ const SlidingPanel = ({
             <div className="panel" style={getPanelStyle(type, size)}>
               <div className={`panel-content ${panelClassName || ''}`}>{children}</div>
             </div>
-            {!glassBefore && (
+            {!noBackdrop && !glassBefore && (
               <div
                 className="glass"
                 style={getPanelGlassStyle(type, size)}
@@ -95,6 +96,7 @@ SlidingPanel.propTypes = {
   onClosing: PropTypes.func,
   onClosed: PropTypes.func,
   backdropClicked: PropTypes.func,
+  noBackdrop: PropTypes.bool,
   children: PropTypes.element,
 };
 
@@ -109,6 +111,7 @@ SlidingPanel.defaultProps = {
   onClosing: () => null,
   onClosed: () => null,
   backdropClicked: () => null,
+  noBackdrop: false,
   children: null,
 };
 
