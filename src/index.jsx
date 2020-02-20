@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import './index.css';
 
-const getPanelGlassStyle = (type, size) => {
+const getPanelGlassStyle = (type, size, hidden) => {
   const horizontal = type === 'bottom' || type === 'top';
   return {
-    width: horizontal ? '100vw' : `${100 - size}vw`,
-    height: horizontal ? `${100 - size}vh` : '100vh',
+    width: horizontal ? `${hidden ? '0' : '100'}vw` : `${100 - size}vw`,
+    height: horizontal ? `${100 - size}vh` : `${hidden ? '0' : '100'}vh`,
     ...(type === 'right' && { left: 0 }),
     ...(type === 'top' && { bottom: 0 }),
     position: 'inherit',
@@ -45,7 +45,7 @@ const SlidingPanel = ({
   const horizontal = type === 'bottom' || type === 'top';
   return (
     <div>
-      <div className={`sliding-panel-container ${isOpen ? 'active' : ''}`}>
+      <div className={`sliding-panel-container ${isOpen ? 'active' : ''} ${noBackdrop ? 'click-through' : ''}`}>
         <CSSTransition
           in={isOpen}
           timeout={500}
@@ -60,21 +60,21 @@ const SlidingPanel = ({
           style={{ display: horizontal ? 'block' : 'flex' }}
         >
           <div>
-            {!noBackdrop && glassBefore && (
+            {glassBefore && (
               <div
                 className="glass"
-                style={getPanelGlassStyle(type, size)}
-                onClick={e => backdropClicked(e)}
+                style={getPanelGlassStyle(type, size, noBackdrop)}
+                onClick={(e) => { if (!noBackdrop) backdropClicked(e); }}
               />
             )}
             <div className="panel" style={getPanelStyle(type, size)}>
               <div className={`panel-content ${panelClassName || ''}`}>{children}</div>
             </div>
-            {!noBackdrop && !glassBefore && (
+            {!glassBefore && (
               <div
                 className="glass"
-                style={getPanelGlassStyle(type, size)}
-                onClick={e => backdropClicked(e)}
+                style={getPanelGlassStyle(type, size, noBackdrop)}
+                onClick={(e) => { if (!noBackdrop) backdropClicked(e); }}
               />
             )}
           </div>

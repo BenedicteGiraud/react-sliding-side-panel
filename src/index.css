@@ -4,6 +4,10 @@
   left: 0;
 }
 
+.sliding-panel-container.click-through {
+  pointer-events: none;
+}
+
 .sliding-panel-container.active {
   position: fixed;
   z-index: 15000;
@@ -11,9 +15,14 @@
   will-change: transform;
 }
 
+.sliding-panel-container.click-through > div {
+  pointer-events: none;
+}
+
 .panel-content {
   height: 100%;
   width: 100%;
+  pointer-events: all;
 }
 
 .panel-container-left-enter {
