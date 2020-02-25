@@ -4,15 +4,16 @@
   left: 0;
 }
 
-.sliding-panel-container.click-through {
-  pointer-events: none;
-}
-
 .sliding-panel-container.active {
   position: fixed;
   z-index: 15000;
   background-color: rgba(0, 0, 0, 0.3);
   will-change: transform;
+}
+
+.sliding-panel-container.active.click-through {
+  pointer-events: none;
+  background-color: transparent;
 }
 
 .sliding-panel-container.click-through > div {

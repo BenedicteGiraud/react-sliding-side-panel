@@ -65,6 +65,7 @@ const App = () => {
         backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
         panelClassName="additional-class"
+        noBackdrop
       >
         <div className="panel-container">
           <div>My Panel Content</div>
