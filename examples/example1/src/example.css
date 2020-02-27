@@ -30,3 +30,7 @@ button {
   align-items: center;
   flex-direction: column;
 }
+
+.input-container {
+  padding: 10px;
+}

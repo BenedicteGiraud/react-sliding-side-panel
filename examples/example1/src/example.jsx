@@ -6,10 +6,12 @@ const App = () => {
   const [openPanel, setOpenPanel] = useState(false);
   const [panelType, setPanelType] = useState('left');
   const [panelSize, setPanelSize] = useState(30);
+  const [noBackdrop, setNoBackdrop] = useState(false);
   return (
     <div className="example-container">
       <div className="form-container">
-        <div>
+        <h1>React Sliding Side Panel</h1>
+        <div className="input-container">
           <label htmlFor="width_input">
             width (in %)
             <input
@@ -20,7 +22,18 @@ const App = () => {
             />
           </label>
         </div>
-        <div>
+        <div className="input-container">
+          <label htmlFor="no_backdrop">
+            <input
+              name="no_backdrop"
+              type="checkbox"
+              checked={noBackdrop}
+              onChange={({ target }) => setNoBackdrop(target.checked)}
+            />
+            Hide backdrop
+          </label>
+        </div>
+        <div className="input-container">
           <button
             type="button"
             onClick={() => {
@@ -65,7 +78,7 @@ const App = () => {
         backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
         panelClassName="additional-class"
-        noBackdrop
+        noBackdrop={noBackdrop}
       >
         <div className="panel-container">
           <div>My Panel Content</div>
