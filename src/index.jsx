@@ -29,6 +29,7 @@ const getPanelStyle = (type, size) => {
 const SlidingPanel = ({
   type,
   size,
+  panelContainerClassName,
   panelClassName,
   isOpen,
   onOpen,
@@ -67,7 +68,7 @@ const SlidingPanel = ({
                 onClick={(e) => { if (!noBackdrop) backdropClicked(e); }}
               />
             )}
-            <div className="panel" style={getPanelStyle(type, size)}>
+            <div className={`panel ${panelContainerClassName || ''}`} style={getPanelStyle(type, size)}>
               <div className={`panel-content ${panelClassName || ''}`}>{children}</div>
             </div>
             {!glassBefore && (
@@ -88,6 +89,7 @@ SlidingPanel.propTypes = {
   type: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   size: PropTypes.number,
   panelClassName: PropTypes.string,
+  panelContainerClassName: PropTypes.string,
   isOpen: PropTypes.bool.isRequired,
   onOpen: PropTypes.func,
   onOpening: PropTypes.func,
@@ -104,6 +106,7 @@ SlidingPanel.defaultProps = {
   type: 'left',
   size: 50,
   panelClassName: '',
+  panelContainerClassName: '',
   onOpen: () => null,
   onOpening: () => null,
   onOpened: () => null,
