@@ -55,9 +55,9 @@ const SlidingPanel = ({
           onEnter={(node, isAppearing) => onOpen(node, isAppearing)}
           onEntering={(node, isAppearing) => onOpening(node, isAppearing)}
           onEntered={(node, isAppearing) => onOpened(node, isAppearing)}
-          onExit={node => onClose(node)}
-          onExiting={node => onClosing(node)}
-          onExited={node => onClosed(node)}
+          onExit={(node) => onClose(node)}
+          onExiting={(node) => onClosing(node)}
+          onExited={(node) => onClosed(node)}
           style={{ display: horizontal ? 'block' : 'flex' }}
         >
           <div>
