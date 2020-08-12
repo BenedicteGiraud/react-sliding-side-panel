@@ -7,6 +7,7 @@ const App = () => {
   const [panelType, setPanelType] = useState('left');
   const [panelSize, setPanelSize] = useState(30);
   const [noBackdrop, setNoBackdrop] = useState(false);
+
   return (
     <div className="example-container">
       <div className="form-container">
@@ -15,6 +16,7 @@ const App = () => {
           <label htmlFor="width_input">
             width (in %)
             <input
+              id="width_input"
               name="width_input"
               type="number"
               value={panelSize}
@@ -26,6 +28,7 @@ const App = () => {
           <label htmlFor="no_backdrop">
             <input
               name="no_backdrop"
+              id="no_backdrop"
               type="checkbox"
               checked={noBackdrop}
               onChange={({ target }) => setNoBackdrop(target.checked)}
