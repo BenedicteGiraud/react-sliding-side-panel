@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import SlidingPanel from 'react-sliding-side-panel';
+import * as React from 'react';
+// import SlidingPanel from 'react-sliding-side-panel';
+import SlidingPanel, { PanelType } from './del/index.js';
 import './example.css';
 
 const App = () => {
-  const [openPanel, setOpenPanel] = useState(false);
-  const [panelType, setPanelType] = useState('left');
-  const [panelSize, setPanelSize] = useState(30);
-  const [noBackdrop, setNoBackdrop] = useState(false);
+  const [openPanel, setOpenPanel] = React.useState(false);
+  const [panelType, setPanelType] = React.useState<PanelType>('left');
+  const [panelSize, setPanelSize] = React.useState(30);
+  const [noBackdrop, setNoBackdrop] = React.useState(false);
+
   return (
     <div className="example-container">
       <div className="form-container">
@@ -15,10 +17,11 @@ const App = () => {
           <label htmlFor="width_input">
             width (in %)
             <input
+              id="width_input"
               name="width_input"
               type="number"
               value={panelSize}
-              onChange={({ target }) => setPanelSize(target.value)}
+              onChange={({ target }) => setPanelSize(Number(target.value))}
             />
           </label>
         </div>
@@ -26,6 +29,7 @@ const App = () => {
           <label htmlFor="no_backdrop">
             <input
               name="no_backdrop"
+              id="no_backdrop"
               type="checkbox"
               checked={noBackdrop}
               onChange={({ target }) => setNoBackdrop(target.checked)}
@@ -80,14 +84,14 @@ const App = () => {
         panelClassName="additional-class"
         noBackdrop={noBackdrop}
       >
-        <div className="panel-container">
-          <div>My Panel Content</div>
-          <button type="button" className="close-button" onClick={() => setOpenPanel(false)}>
-            close
+      <div className="panel-container">
+        <div>My Panel Content</div>
+        <button type="button" className="close-button" onClick={() => setOpenPanel(false)}>
+          close
           </button>
-        </div>
+      </div>
       </SlidingPanel>
-    </div>
+    </div >
   );
 };
 
