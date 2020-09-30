@@ -1,8 +1,6 @@
 import * as React from 'react';
-// import SlidingPanel from 'react-sliding-side-panel';
-import SlidingPanel from './del/index.js';
+import SlidingPanel from 'react-sliding-side-panel';
 import './example.css';
-// import './del/index.css';
 
 const App = () => {
   const [openPanel, setOpenPanel] = React.useState(false);

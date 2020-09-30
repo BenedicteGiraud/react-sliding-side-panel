@@ -18,5 +18,5 @@ export interface SliderProps {
     onClosing?: (node: HTMLElement) => void;
     onClosed?: (node: HTMLElement) => void;
 }
-declare const SlidingPanel: React.SFC<SliderProps>;
+declare const SlidingPanel: React.FunctionComponent<SliderProps>;
 export default SlidingPanel;

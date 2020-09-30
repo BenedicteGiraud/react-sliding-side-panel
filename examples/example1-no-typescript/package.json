@@ -23,10 +23,9 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@types/react-transition-group": "^4.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-sliding-side-panel": "^1.0.15"
+    "react-sliding-side-panel": "^1.1.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

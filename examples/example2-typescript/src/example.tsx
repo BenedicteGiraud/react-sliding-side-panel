@@ -1,13 +1,16 @@
 import * as React from 'react';
-// import SlidingPanel from 'react-sliding-side-panel';
-import SlidingPanel, { PanelType } from './del/index.js';
+import SlidingPanel from 'react-sliding-side-panel';
+// import SlidingPanel from './del/index';
+// import { PanelType } from 'react-sliding-side-panel/index.d.js';
+// import { PanelType } from './del/index.d.js';
 import './example.css';
 
-const App = () => {
-  const [openPanel, setOpenPanel] = React.useState(false);
+type PanelType = 'right' | 'top' | 'left' | 'bottom'
+const App: React.FunctionComponent<any> = () => {
+  const [openPanel, setOpenPanel] = React.useState<boolean>(false);
   const [panelType, setPanelType] = React.useState<PanelType>('left');
-  const [panelSize, setPanelSize] = React.useState(30);
-  const [noBackdrop, setNoBackdrop] = React.useState(false);
+  const [panelSize, setPanelSize] = React.useState<number>(30);
+  const [noBackdrop, setNoBackdrop] = React.useState<boolean>(false);
 
   return (
     <div className="example-container">
@@ -82,16 +85,17 @@ const App = () => {
         backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
         panelClassName="additional-class"
+        panelContainerClassName=""
         noBackdrop={noBackdrop}
       >
-      <div className="panel-container">
-        <div>My Panel Content</div>
-        <button type="button" className="close-button" onClick={() => setOpenPanel(false)}>
-          close
+        <div className="panel-container">
+          <div>My Panel Content</div>
+          <button type="button" className="close-button" onClick={() => setOpenPanel(false)}>
+            close
           </button>
-      </div>
+        </div>
       </SlidingPanel>
-    </div >
+    </div>
   );
 };
 

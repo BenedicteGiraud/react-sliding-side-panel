@@ -55,7 +55,7 @@ const getPanelStyle = (type: PanelType, size: number): PanelGlassStyle => {
   };
 };
 
-const SlidingPanel: React.SFC<SliderProps> = ({
+const SlidingPanel: React.FunctionComponent<SliderProps> = ({
   type,
   size,
   panelContainerClassName,
