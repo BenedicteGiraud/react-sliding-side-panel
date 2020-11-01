@@ -1,7 +1,5 @@
 import { useState } from 'react';
-// const SlidingPanel = require('react-sliding-side-panel');
 import SlidingPanel from 'react-sliding-side-panel';
-// import SlidingPanel from '../lib';
 
 export default function Home() {
   const [openPanel, setOpenPanel] = useState(false);

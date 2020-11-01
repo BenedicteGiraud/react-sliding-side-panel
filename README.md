@@ -15,6 +15,7 @@ Then use it in your app:
 ```js
 import React, { useState } from 'react';
 import SlidingPanel from 'react-sliding-side-panel';
+import 'react-sliding-side-panel/lib/index.css';
 
 const App = () => {
   const [openPanel, setOpenPanel] = useState(false);
@@ -39,6 +40,9 @@ const App = () => {
 
 export default App;
 ```
+
+[Example with typescript](https://github.com/BenedicteGiraud/react-sliding-side-panel/tree/master/examples/example2-typescript)
+[Example with nextJS](https://github.com/BenedicteGiraud/react-sliding-side-panel/tree/master/examples/example3-nextjs)
 
 ## Props
 
