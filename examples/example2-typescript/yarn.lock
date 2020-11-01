@@ -4294,10 +4294,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-sliding-side-panel@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-sliding-side-panel/-/react-sliding-side-panel-2.0.1.tgz#1a2c4665e974edcfc0949e3cd4f3a4b3d987a883"
-  integrity sha512-Z3c52BnVCdJym93yfILkMWoZSyR5EO9AExRxybmsSyJQgCtkIPUKJToX1RPoRs2r8XDkqTvCxRDT46yp6DbUTQ==
+react-sliding-side-panel@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-sliding-side-panel/-/react-sliding-side-panel-2.0.3.tgz#c1442ebe3c7e4e8d003f8907c13df430c3648653"
+  integrity sha512-5uujAqwu9XhTPmlvP58TDjHMusFTg3/AE4ROxU8GG+cEUHNq4s43mAiLOZa1gHu39jCLMlSgzHT7fsKQrTutYg==
   dependencies:
     react "^17.0.1"
     react-dom "^17.0.1"

@@ -1,0 +1,37 @@
+html,
+body,
+#root,
+#__next {
+  height: 100%;
+  margin: 0px;
+}
+
+.example-container {
+  height: 100%;
+  background-color: rgb(185, 209, 253);
+}
+
+.panel-container {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+button {
+  margin: 2px;
+}
+
+.form-container {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input-container {
+  padding: 10px;
+}

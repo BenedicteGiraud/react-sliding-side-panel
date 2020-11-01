@@ -1,13 +1,13 @@
-import * as React from 'react';
-import SlidingPanel, { PanelType } from 'react-sliding-side-panel';
-import './example.css';
-import 'react-sliding-side-panel/lib/index.css';
+import { useState } from 'react';
+// const SlidingPanel = require('react-sliding-side-panel');
+import SlidingPanel from 'react-sliding-side-panel';
+// import SlidingPanel from '../lib';
 
-const App: React.FunctionComponent<any> = () => {
-  const [openPanel, setOpenPanel] = React.useState<boolean>(false);
-  const [panelType, setPanelType] = React.useState<PanelType>('left');
-  const [panelSize, setPanelSize] = React.useState<number>(30);
-  const [noBackdrop, setNoBackdrop] = React.useState<boolean>(false);
+export default function Home() {
+  const [openPanel, setOpenPanel] = useState(false);
+  const [panelType, setPanelType] = useState('left');
+  const [panelSize, setPanelSize] = useState(30);
+  const [noBackdrop, setNoBackdrop] = useState(false);
 
   return (
     <div className="example-container">
@@ -94,6 +94,4 @@ const App: React.FunctionComponent<any> = () => {
       </SlidingPanel>
     </div>
   );
-};
-
-export default App;
+}
