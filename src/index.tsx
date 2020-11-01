@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './index.css';
 
-export type PanelType = 'top' | 'right' | 'bottom' | 'left'
+export type PanelType = 'top' | 'right' | 'bottom' | 'left';
 
 type Nullable<T> = T | null;
 export interface SliderProps {
@@ -17,20 +17,32 @@ export interface SliderProps {
   onOpen?: (node: HTMLElement, isAppearing: boolean) => void;
   onOpening?: (node: HTMLElement, isAppearing: boolean) => void;
   onOpened?: (node: HTMLElement, isAppearing: boolean) => void;
-  onClose?: (node: HTMLElement) => void,
-  onClosing?: (node: HTMLElement) => void,
-  onClosed?: (node: HTMLElement) => void,
+  onClose?: (node: HTMLElement) => void;
+  onClosing?: (node: HTMLElement) => void;
+  onClosed?: (node: HTMLElement) => void;
 }
 
 type PanelGlassStyle = {
-  width: string,
-  height: string,
-  left?: number,
-  right?: number,
-  bottom?: number,
-  overflow?: string,
-  position: 'inherit' | '-moz-initial' | 'initial' | 'revert' | 'unset' | '-webkit-sticky' | 'absolute' | 'fixed' | 'relative' | 'static' | 'sticky' | undefined
-}
+  width: string;
+  height: string;
+  left?: number;
+  right?: number;
+  bottom?: number;
+  overflow?: string;
+  position:
+    | 'inherit'
+    | '-moz-initial'
+    | 'initial'
+    | 'revert'
+    | 'unset'
+    | '-webkit-sticky'
+    | 'absolute'
+    | 'fixed'
+    | 'relative'
+    | 'static'
+    | 'sticky'
+    | undefined;
+};
 
 const getPanelGlassStyle = (type: PanelType, size: number, hidden: boolean): PanelGlassStyle => {
   const horizontal = type === 'bottom' || type === 'top';
@@ -69,7 +81,7 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
   onClosed,
   backdropClicked,
   noBackdrop,
-  children
+  children,
 }) => {
   const glassBefore = type === 'right' || type === 'bottom';
   const horizontal = type === 'bottom' || type === 'top';
@@ -99,10 +111,7 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
                 }}
               />
             )}
-            <div
-              className={`panel ${panelContainerClassName || ''}`}
-              style={getPanelStyle(type, size)}
-            >
+            <div className={`panel ${panelContainerClassName || ''}`} style={getPanelStyle(type, size)}>
               <div className={`panel-content ${panelClassName || ''}`}>{children}</div>
             </div>
             {!glassBefore && (

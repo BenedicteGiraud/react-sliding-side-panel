@@ -1,11 +1,7 @@
 import * as React from 'react';
-import SlidingPanel from 'react-sliding-side-panel';
-// import SlidingPanel from './del/index';
-// import { PanelType } from 'react-sliding-side-panel/index.d.js';
-// import { PanelType } from './del/index.d.js';
+import SlidingPanel, { PanelType } from 'react-sliding-side-panel';
 import './example.css';
 
-type PanelType = 'right' | 'top' | 'left' | 'bottom'
 const App: React.FunctionComponent<any> = () => {
   const [openPanel, setOpenPanel] = React.useState<boolean>(false);
   const [panelType, setPanelType] = React.useState<PanelType>('left');

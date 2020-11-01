@@ -3,4 +3,4 @@ import * as ReactDOM from 'react-dom';
 import App from './example';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-module.hot.accept();
+module.hot && module.hot.accept();
