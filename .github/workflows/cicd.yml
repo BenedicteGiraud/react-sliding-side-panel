@@ -14,4 +14,5 @@ on:
 
 jobs:
   quality:
+    name: 🎯 Check code quality
     uses: ./.github/workflows/quality.yml
