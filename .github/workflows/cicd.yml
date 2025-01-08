@@ -1,0 +1,18 @@
+name: 🚀 CICD
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+jobs:
+  quality:
+    name: 🎯 Check code quality
+    uses: ./.github/workflows/quality.yml
