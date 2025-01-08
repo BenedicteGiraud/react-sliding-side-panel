@@ -1,0 +1,35 @@
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+  packages: read
+  pull-requests: read
+
+concurrency:
+  group: react-sliding-side-panel-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: 🎯 Check code quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: './.nvmrc'
+
+      - name: 📦 Install node_modules
+        shell: bash
+        run: npm ci
+
+      - name: 🔎 Run static analysis (prettier)
+        run: npm run format:check
+
+      - name: 🔎 Run static analysis
+        shell: bash
+        run: npm run lint
