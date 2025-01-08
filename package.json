@@ -20,8 +20,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc && node scripts/buildCSS.js",
-    "format": "prettier --write \"src/**/*.ts*\" \"tests/**/*.ts*\" ",
-    "format:check": "prettier --check \"src/**/*.ts*\" \"tests/**/*.ts*\" \"src/**/*.css\"",
+    "format": "prettier --write \"src/**/*.ts*\" ",
+    "format:check": "prettier --check \"src/**/*.ts*\" \"src/**/*.css\"",
     "lint": "tslint -p tsconfig.json"
   },
   "keywords": [
