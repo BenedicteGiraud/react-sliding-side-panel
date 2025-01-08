@@ -1,13 +1,13 @@
-import * as React from 'react';
-import SlidingPanel from 'react-sliding-side-panel';
-import './example.css';
+import React, { useState } from 'react';
+import SlidingPanel, { PanelType } from 'react-sliding-side-panel';
+import './App.css';
 import 'react-sliding-side-panel/lib/index.css';
 
-const App = () => {
-  const [openPanel, setOpenPanel] = React.useState(false);
-  const [panelType, setPanelType] = React.useState('left');
-  const [panelSize, setPanelSize] = React.useState(30);
-  const [noBackdrop, setNoBackdrop] = React.useState(false);
+const App: React.FunctionComponent<any> = () => {
+  const [openPanel, setOpenPanel] = useState<boolean>(false);
+  const [panelType, setPanelType] = useState<PanelType>('left');
+  const [panelSize, setPanelSize] = useState<number>(30);
+  const [noBackdrop, setNoBackdrop] = useState<boolean>(false);
 
   return (
     <div className="example-container">
@@ -82,6 +82,7 @@ const App = () => {
         backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
         panelClassName="additional-class"
+        panelContainerClassName=""
         noBackdrop={noBackdrop}
       >
         <div className="panel-container">
