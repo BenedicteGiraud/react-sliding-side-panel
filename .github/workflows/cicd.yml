@@ -19,4 +19,5 @@ jobs:
 
   publish_on_github_pages:
     needs: quality
+    name: 🐱 Publish on GitHub Pages
     uses: ./.github/workflows/publish-gh-pages.yml
