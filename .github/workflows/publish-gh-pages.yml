@@ -1,3 +1,5 @@
+name: 🐱 Publish on GitHub Pages
+
 on:
   workflow_dispatch:
     inputs:
