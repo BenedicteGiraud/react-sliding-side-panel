@@ -27,12 +27,12 @@ jobs:
         run: |
           echo "Package version: $(node -p "require('./package.json').version")"
 
-      # - name: 📦 Check if release tag is the same as package version
-      #   run: |
-      #     if [ "${{ github.event.release.tag_name }}" != "$(node -p "require('./package.json').version")" ]; then
-      #       echo "Release tag is not the same as package version"
-      #       exit 1
-      #     fi
+      - name: 📦 Check if release tag is the same as package version
+        run: |
+          if [ "${{ github.event.release.tag_name }}" != "$(node -p "require('./package.json').version")" ]; then
+            echo "Release tag is not the same as package version"
+            exit 1
+          fi
 
   publish:
     name: 🚀 Publish on npm
