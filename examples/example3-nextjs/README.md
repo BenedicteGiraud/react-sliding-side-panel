@@ -1,6 +1,6 @@
-## Getting Started
+## React Sliding Side Panel NextJS Example
 
-First, run the development server:
+To start this example run:
 
 ```bash
 npm run dev
