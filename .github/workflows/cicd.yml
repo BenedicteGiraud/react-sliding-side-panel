@@ -14,7 +14,6 @@ on:
 
 jobs:
   quality:
-    name: 🎯 Check code quality
     uses: ./.github/workflows/quality.yml
 
   publish_on_npm:

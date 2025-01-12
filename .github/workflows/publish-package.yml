@@ -1,3 +1,5 @@
+name: 🚀 Publish on npm
+
 on:
   workflow_call:
 
@@ -10,7 +12,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # github.event.release.tag_name
   check_release_tag_is_same_as_package_version:
     name: 🏷️ Check release tag
     runs-on: ubuntu-latest
@@ -33,26 +34,30 @@ jobs:
             exit 1
           fi
 
-  # publish:
-  #   name: 🚀 Publish on npm
-  #   needs: check_release_tag_is_same_as_package_version
-  #   runs-on: ubuntu-latest
-  #   environment: production
-  #   steps:
-  #     - name: 🧾 Checkout
-  #       uses: actions/checkout@v4
+  publish:
+    name: 🚀 Publish on npm
+    needs: check_release_tag_is_same_as_package_version
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
 
-  #     - name: 🛠️ Use Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version-file: './.nvmrc'
-  #         registry-url: 'https://registry.npmjs.org'
+      - name: 🛠️ Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: './.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
 
-  #     - name: 📦 Install node_modules
-  #       shell: bash
-  #       run: npm ci
+      - name: 📦 Install node_modules
+        shell: bash
+        run: npm ci
 
-  #     - name: 🚀 Publish on npm
-  #       run: npm publish --provenance --access public
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: 🏗️ Build
+        shell: bash
+        run: npm run build
+
+      # - name: 🚀 Publish on npm
+      #   run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
