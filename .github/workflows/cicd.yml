@@ -14,5 +14,10 @@ on:
 
 jobs:
   quality:
-    name: 🎯 Check code quality
     uses: ./.github/workflows/quality.yml
+
+  publish_on_npm:
+    needs: quality
+    if: github.event_name == 'release'
+    uses: ./.github/workflows/publish-package.yml
+    secrets: inherit

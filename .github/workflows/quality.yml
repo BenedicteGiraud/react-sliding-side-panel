@@ -1,3 +1,5 @@
+name: 🎯 Check code quality
+
 on:
   workflow_call:
 

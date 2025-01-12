@@ -1,0 +1,64 @@
+name: 🚀 Publish on npm
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: react-sliding-side-panel-npm-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check_release_tag_is_same_as_package_version:
+    name: 🏷️ Check release tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
+
+      - name: 📦 Check release tag
+        run: |
+          echo "Release tag: ${{ github.event.release.tag_name }}"
+
+      - name: 📦 Check package version
+        run: |
+          echo "Package version: $(node -p "require('./package.json').version")"
+
+      - name: 📦 Check if release tag is the same as package version
+        run: |
+          if [ "${{ github.event.release.tag_name }}" != "$(node -p "require('./package.json').version")" ]; then
+            echo "Release tag is not the same as package version"
+            exit 1
+          fi
+
+  publish:
+    name: 🚀 Publish on npm
+    needs: check_release_tag_is_same_as_package_version
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: './.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: 📦 Install node_modules
+        shell: bash
+        run: npm ci
+
+      - name: 🏗️ Build
+        shell: bash
+        run: npm run build
+
+      - name: 🚀 Publish on npm
+        shell: bash
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
