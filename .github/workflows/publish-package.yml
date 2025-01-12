@@ -57,7 +57,8 @@ jobs:
         shell: bash
         run: npm run build
 
-      # - name: 🚀 Publish on npm
-      #   run: npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: 🚀 Publish on npm
+        shell: bash
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
