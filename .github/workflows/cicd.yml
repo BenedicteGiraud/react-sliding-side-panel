@@ -20,3 +20,4 @@ jobs:
     needs: quality
     # if: github.event_name == 'release'
     uses: ./.github/workflows/publish-package.yml
+    secrets: inherit
