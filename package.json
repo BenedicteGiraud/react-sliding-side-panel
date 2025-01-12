@@ -1,6 +1,6 @@
 {
   "name": "react-sliding-side-panel",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "A sliding panel for React applications",
   "author": "Benedicte Giraud",
   "license": "MIT",
@@ -38,7 +38,7 @@
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@types/react": "^16.9.55",
