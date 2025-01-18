@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 export type PanelType = 'top' | 'right' | 'bottom' | 'left';
 
 type Nullable<T> = T | null;
+
 export interface SliderProps {
   type: PanelType;
   size: number;
@@ -21,7 +22,7 @@ export interface SliderProps {
   onClosed?: (node: HTMLElement) => void;
 }
 
-type PanelGlassStyle = {
+type GlassPanelStyle = {
   width: string;
   height: string;
   left?: number;
@@ -43,27 +44,43 @@ type PanelGlassStyle = {
     | undefined;
 };
 
-const getPanelGlassStyle = (type: PanelType, size: number, hidden: boolean): PanelGlassStyle => {
-  const horizontal = type === 'bottom' || type === 'top';
+const getGlassPanelStyle = (type: PanelType, size: number, hidden: boolean): GlassPanelStyle => {
+  const isHorizontal = type === 'bottom' || type === 'top';
   return {
-    width: horizontal ? `${hidden ? '0' : '100'}vw` : `${100 - size}vw`,
-    height: horizontal ? `${100 - size}vh` : `${hidden ? '0' : '100'}vh`,
+    width: isHorizontal ? `${hidden ? '0' : '100'}vw` : `${100 - size}vw`,
+    height: isHorizontal ? `${100 - size}vh` : `${hidden ? '0' : '100'}vh`,
     ...(type === 'right' && { left: 0 }),
     ...(type === 'top' && { bottom: 0 }),
     position: 'inherit',
   };
 };
 
-const getPanelStyle = (type: PanelType, size: number): PanelGlassStyle => {
-  const horizontal = type === 'bottom' || type === 'top';
+const getPanelStyle = (type: PanelType, size: number): GlassPanelStyle => {
+  const isHorizontal = type === 'bottom' || type === 'top';
   return {
-    width: horizontal ? '100vw' : `${size}vw`,
-    height: horizontal ? `${size}vh` : '100vh',
+    width: isHorizontal ? '100vw' : `${size}vw`,
+    height: isHorizontal ? `${size}vh` : '100vh',
     ...(type === 'right' && { right: 0 }),
     ...(type === 'bottom' && { bottom: 0 }),
     position: 'inherit',
     overflow: 'auto',
   };
+};
+
+interface GlassPanelProps {
+  type: PanelType;
+  size: number;
+  noBackdrop?: boolean;
+  backdropClicked?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
+
+const GlassPanel = ({ type, size, noBackdrop, backdropClicked }: GlassPanelProps) => {
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!noBackdrop && backdropClicked) {
+      backdropClicked(e);
+    }
+  };
+  return <div className="glass" style={getGlassPanelStyle(type, size, !!noBackdrop)} onClick={handleBackdropClick} />;
 };
 
 const SlidingPanel: React.FunctionComponent<SliderProps> = ({
@@ -82,8 +99,9 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
   noBackdrop,
   children,
 }) => {
+  const isHorizontal = type === 'bottom' || type === 'top';
   const glassBefore = type === 'right' || type === 'bottom';
-  const horizontal = type === 'bottom' || type === 'top';
+
   return (
     <div>
       <div className={`sliding-panel-container ${isOpen ? 'active' : ''} ${noBackdrop ? 'click-through' : ''}`}>
@@ -98,29 +116,19 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
           onExit={onClose}
           onExiting={onClosing}
           onExited={onClosed}
-          style={{ display: horizontal ? 'block' : 'flex' }}
+          style={{ display: isHorizontal ? 'block' : 'flex' }}
         >
           <div>
             {glassBefore && (
-              <div
-                className="glass"
-                style={getPanelGlassStyle(type, size, !!noBackdrop)}
-                onClick={(e) => {
-                  if (!noBackdrop && backdropClicked) backdropClicked(e);
-                }}
-              />
+              <GlassPanel noBackdrop={noBackdrop} backdropClicked={backdropClicked} type={type} size={size} />
             )}
+
             <div className={`panel ${panelContainerClassName || ''}`} style={getPanelStyle(type, size)}>
               <div className={`panel-content ${panelClassName || ''}`}>{children}</div>
             </div>
+
             {!glassBefore && (
-              <div
-                className="glass"
-                style={getPanelGlassStyle(type, size, !!noBackdrop)}
-                onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-                  if (!noBackdrop && backdropClicked) backdropClicked(e);
-                }}
-              />
+              <GlassPanel noBackdrop={noBackdrop} backdropClicked={backdropClicked} type={type} size={size} />
             )}
           </div>
         </CSSTransition>
