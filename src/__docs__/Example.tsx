@@ -1,9 +1,8 @@
 import React, { FC, useState } from 'react';
-import SlidingPanel, { SliderProps } from '../index';
+import SlidingPanel, { SliderPanelProps } from '../SlidingPanel';
 import styles from './SlidingPanel.module.css';
-import '../index.css';
 
-const Example: FC<SliderProps> = ({ type, size, noBackdrop, isOpen }) => {
+const Example: FC<SliderPanelProps> = ({ type, size, noBackdrop, isOpen }) => {
   const [openPanel, setOpenPanel] = useState<boolean>(false);
 
   return (

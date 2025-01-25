@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import SlidingPanel, { PanelType } from '../../../src';
+import SlidingPanel, { PanelType } from '../../src';
 import styles from './App.module.css';
+import '../../src/index.css';
 
 const App = () => {
   const [openPanel, setOpenPanel] = useState<boolean>(false);
   const [panelType, setPanelType] = useState<PanelType>('left');
   const [panelSize, setPanelSize] = useState<number>(30);
   const [noBackdrop, setNoBackdrop] = useState<boolean>(false);
-
+  
   const directions: PanelType[] = ['left', 'right', 'top', 'bottom'];
 
   return (
@@ -50,7 +51,7 @@ const App = () => {
                 name="direction"
                 value={type}
                 checked={panelType === type}
-                onChange={() => setPanelType(type)}
+                onChange={() => setPanelType(type)} 
               />
               <label htmlFor={type}>{type}</label>
             </div>
