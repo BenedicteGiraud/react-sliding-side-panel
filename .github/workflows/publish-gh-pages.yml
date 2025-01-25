@@ -34,13 +34,13 @@ jobs:
       - name: 📦 Install node_modules
         shell: bash
         run: |
-          cd examples/example2-typescript
+          cd examples
           npm ci
 
       - name: 🏗️ Build pages
         shell: bash
         run: |
-          cd examples/example2-typescript
+          cd examples
           npm run build
 
       - name: Setup Pages
@@ -49,7 +49,7 @@ jobs:
       - name: 📁 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: examples/example2-typescript/dist
+          path: examples/dist
 
   deploy:
     name: 🚀 Deploy pages
