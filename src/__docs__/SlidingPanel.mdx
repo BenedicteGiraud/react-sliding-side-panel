@@ -1,0 +1,58 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import Example from './Example.tsx';
+import * as SlidingPanel from './SlidingPanel.stories.tsx';
+
+<Meta of={SlidingPanel} title="SlidingPanel" />
+
+# SlidingPanel
+
+SlidingPanel component with different props.
+
+#### Example
+
+<Canvas of={SlidingPanel.Default} />
+
+## Usage
+
+```ts
+import SlidingPanel from "react-sliding-side-panel";
+
+const Example = () => {
+  const [openPanel, setOpenPanel] = useState<boolean>(false);
+
+  return (
+    <div>
+      <div>
+        <h1>React Sliding Side Panel</h1>
+        <div>
+          <button type="button" onClick={() => setOpenPanel(true)}>
+            Open Panel
+          </button>
+        </div>
+      </div>
+      <SlidingPanel
+        type="left"
+        isOpen={openPanel}
+        backdropClicked={() => setOpenPanel(false)}
+        size={30}
+      >
+        <div>
+          <div>My Panel Content</div>
+          <button type="button" onClick={() => setOpenPanel(false)}>
+            close
+          </button>
+        </div>
+      </SlidingPanel>
+    </div>
+  );
+};
+
+export default Example;
+```
+
+#### Arguments
+
+- **type** - A string with one of four possible values: "left", "right", "top" or "bottom". It defines the position of the panel.
+- **size** - A number indicating the width in percentage of the panel
+- **isOpen** - A boolean indicating whether the panel is open or not.
+- **backdropClicked** _`() => void`_ - a function called when the backdrop is clicked

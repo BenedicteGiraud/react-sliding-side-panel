@@ -1,31 +1,36 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SlidingPanel, { PanelType } from 'react-sliding-side-panel';
-import './App.css';
+import styles from './App.module.css';
 import 'react-sliding-side-panel/lib/index.css';
 
-const App: React.FunctionComponent<any> = () => {
+const App = () => {
   const [openPanel, setOpenPanel] = useState<boolean>(false);
   const [panelType, setPanelType] = useState<PanelType>('left');
   const [panelSize, setPanelSize] = useState<number>(30);
   const [noBackdrop, setNoBackdrop] = useState<boolean>(false);
+  
+  const directions: PanelType[] = ['left', 'right', 'top', 'bottom'];
 
   return (
-    <div className="example-container">
-      <div className="form-container">
+    <div className={styles.exampleContainer}>
+      <div className={styles.formContainer}>
         <h1>React Sliding Side Panel</h1>
-        <div className="input-container">
+        <div className={styles.inputContainer}>
           <label htmlFor="width_input">
             width (in %)
             <input
               id="width_input"
               name="width_input"
-              type="number"
+              type="range"
+              max={100}
+              min={0}
               value={panelSize}
               onChange={({ target }) => setPanelSize(Number(target.value))}
             />
+            {panelSize}%
           </label>
         </div>
-        <div className="input-container">
+        <div className={styles.inputContainer}>
           <label htmlFor="no_backdrop">
             <input
               name="no_backdrop"
@@ -37,42 +42,24 @@ const App: React.FunctionComponent<any> = () => {
             Hide backdrop
           </label>
         </div>
-        <div className="input-container">
-          <button
-            type="button"
-            onClick={() => {
-              setPanelType('left');
-              setOpenPanel(true);
-            }}
-          >
-            Left
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setPanelType('right');
-              setOpenPanel(true);
-            }}
-          >
-            Right
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setPanelType('top');
-              setOpenPanel(true);
-            }}
-          >
-            Top
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setPanelType('bottom');
-              setOpenPanel(true);
-            }}
-          >
-            Bottom
+        <div className={styles.inputContainer}>
+          {directions.map((type) => (
+            <div key={type}>
+              <input
+                type="radio"
+                id={type}
+                name="direction"
+                value={type}
+                checked={panelType === type}
+                onChange={() => setPanelType(type)} 
+              />
+              <label htmlFor={type}>{type}</label>
+            </div>
+          ))}
+        </div>
+        <div className={styles.inputContainer}>
+          <button type="button" onClick={() => setOpenPanel(true)}>
+            Open Panel
           </button>
         </div>
       </div>
@@ -81,13 +68,13 @@ const App: React.FunctionComponent<any> = () => {
         isOpen={openPanel}
         backdropClicked={() => setOpenPanel(false)}
         size={panelSize}
-        panelClassName="additional-class"
+        panelClassName=""
         panelContainerClassName=""
         noBackdrop={noBackdrop}
       >
-        <div className="panel-container">
+        <div className={styles.panelContainer}>
           <div>My Panel Content</div>
-          <button type="button" className="close-button" onClick={() => setOpenPanel(false)}>
+          <button type="button" className={styles.closeButton} onClick={() => setOpenPanel(false)}>
             close
           </button>
         </div>
