@@ -1,16 +1,17 @@
-import * as React from 'react';
+import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import './SlidingPanel.css';
 
 export type PanelType = 'top' | 'right' | 'bottom' | 'left';
 
 type Nullable<T> = T | null;
 
-export interface SliderProps {
-  type: PanelType;
-  size: number;
+export interface SliderPanelProps {
+  type?: PanelType;
+  size?: number;
   panelContainerClassName?: string;
   panelClassName?: string;
-  isOpen: boolean;
+  isOpen?: boolean;
   children: Nullable<React.ReactElement>;
   noBackdrop?: boolean;
   backdropClicked?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -83,14 +84,14 @@ const GlassPanel = ({ type, size, noBackdrop, backdropClicked }: GlassPanelProps
   return <div className="glass" style={getGlassPanelStyle(type, size, !!noBackdrop)} onClick={handleBackdropClick} />;
 };
 
-const SlidingPanel: React.FunctionComponent<SliderProps> = ({
+const SlidingPanel = ({
   type = 'left',
   size = 50,
   panelContainerClassName = '',
   panelClassName = '',
   noBackdrop = false,
   children = null,
-  isOpen,
+  isOpen = false,
   onOpen,
   onOpening,
   onOpened,
@@ -98,7 +99,9 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
   onClosing,
   onClosed,
   backdropClicked,
-}) => {
+}: SliderPanelProps) => {
+  const nodeRef = useRef(null);
+
   const isHorizontal = type === 'bottom' || type === 'top';
   const glassBefore = type === 'right' || type === 'bottom';
 
@@ -117,8 +120,9 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
           onExiting={onClosing}
           onExited={onClosed}
           style={{ display: isHorizontal ? 'block' : 'flex' }}
+          nodeRef={nodeRef}
         >
-          <div>
+          <div ref={nodeRef}>
             {glassBefore && (
               <GlassPanel noBackdrop={noBackdrop} backdropClicked={backdropClicked} type={type} size={size} />
             )}

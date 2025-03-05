@@ -25,6 +25,11 @@ node_modules
 
 # Lib
 lib
+dist
 
 .DS_Store
 _gh-pages
+
+#storybook build directory
+storybook-static
+*storybook.log

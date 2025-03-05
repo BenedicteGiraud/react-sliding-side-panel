@@ -1,16 +1,9 @@
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0px;
-}
-
-.example-container {
-  height: 100%;
+.exampleContainer {
+  /* height: 100vh; */
   background-color: rgb(185, 209, 253);
 }
 
-.panel-container {
+.panelContainer {
   height: 100%;
   width: 100%;
   background-color: white;
@@ -20,17 +13,15 @@ body,
   flex-direction: column;
 }
 
-button {
-  margin: 2px;
-}
-
-.form-container {
+.formContainer {
   padding: 30px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.input-container {
+.inputContainer {
   padding: 10px;
+  display: flex;
+  gap: 0.5rem;
 }

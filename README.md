@@ -41,8 +41,7 @@ const App = () => {
 export default App;
 ```
 
-- [Example with typescript](https://github.com/BenedicteGiraud/react-sliding-side-panel/tree/master/examples/example2-typescript)
-- [Example with nextJS](https://github.com/BenedicteGiraud/react-sliding-side-panel/tree/master/examples/example3-nextjs)
+- [Example](https://github.com/BenedicteGiraud/react-sliding-side-panel/tree/master/examples/)
 
 ## Props
 
