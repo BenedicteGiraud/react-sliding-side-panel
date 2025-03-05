@@ -84,10 +84,12 @@ const GlassPanel = ({ type, size, noBackdrop, backdropClicked }: GlassPanelProps
 };
 
 const SlidingPanel: React.FunctionComponent<SliderProps> = ({
-  type,
-  size,
-  panelContainerClassName,
-  panelClassName,
+  type = 'left',
+  size = 50,
+  panelContainerClassName = '',
+  panelClassName = '',
+  noBackdrop = false,
+  children = null,
   isOpen,
   onOpen,
   onOpening,
@@ -96,8 +98,6 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
   onClosing,
   onClosed,
   backdropClicked,
-  noBackdrop,
-  children,
 }) => {
   const isHorizontal = type === 'bottom' || type === 'top';
   const glassBefore = type === 'right' || type === 'bottom';
@@ -135,15 +135,6 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
       </div>
     </div>
   );
-};
-
-SlidingPanel.defaultProps = {
-  type: 'left',
-  size: 50,
-  panelClassName: '',
-  panelContainerClassName: '',
-  noBackdrop: false,
-  children: null,
 };
 
 export default SlidingPanel;
