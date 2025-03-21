@@ -6,7 +6,7 @@ export type PanelType = 'top' | 'right' | 'bottom' | 'left';
 
 type Nullable<T> = T | null;
 
-export interface SliderPanelProps {
+export interface SliderProps {
   type?: PanelType;
   size?: number;
   panelContainerClassName?: string;
@@ -99,7 +99,7 @@ const SlidingPanel = ({
   onClosing,
   onClosed,
   backdropClicked,
-}: SliderPanelProps) => {
+}: SliderProps) => {
   const nodeRef = useRef(null);
 
   const isHorizontal = type === 'bottom' || type === 'top';
