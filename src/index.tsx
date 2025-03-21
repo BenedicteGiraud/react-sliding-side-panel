@@ -83,7 +83,7 @@ const GlassPanel = ({ type, size, noBackdrop, backdropClicked }: GlassPanelProps
   return <div className="glass" style={getGlassPanelStyle(type, size, !!noBackdrop)} onClick={handleBackdropClick} />;
 };
 
-const SlidingPanel: React.FunctionComponent<SliderProps> = ({
+const SlidingPanel = ({
   type = 'left',
   size = 50,
   panelContainerClassName = '',
@@ -98,7 +98,7 @@ const SlidingPanel: React.FunctionComponent<SliderProps> = ({
   onClosing,
   onClosed,
   backdropClicked,
-}) => {
+}: SliderProps) => {
   const isHorizontal = type === 'bottom' || type === 'top';
   const glassBefore = type === 'right' || type === 'bottom';
 

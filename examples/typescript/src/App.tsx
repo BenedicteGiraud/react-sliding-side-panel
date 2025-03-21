@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import SlidingPanel, { PanelType } from 'react-sliding-side-panel';
+import { useState } from 'react';
+import SlidingPanel, { PanelType } from '../../../src';
 import './App.css';
-import 'react-sliding-side-panel/lib/index.css';
+import '../../../src/index.css';
 
-const App: React.FunctionComponent<any> = () => {
+const App = () => {
   const [openPanel, setOpenPanel] = useState<boolean>(false);
   const [panelType, setPanelType] = useState<PanelType>('left');
   const [panelSize, setPanelSize] = useState<number>(30);
