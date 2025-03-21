@@ -1,0 +1,27 @@
+.exampleContainer {
+  /* height: 100vh; */
+  background-color: rgb(185, 209, 253);
+}
+
+.panelContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.formContainer {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputContainer {
+  padding: 10px;
+  display: flex;
+  gap: 0.5rem;
+}
