@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SlidingPanel, { PanelType } from 'react-sliding-side-panel';
+import 'react-sliding-side-panel/dist/react-sliding-side-panel.css';
 import styles from './App.module.css';
 
 const App = () => {

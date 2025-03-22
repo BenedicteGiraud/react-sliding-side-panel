@@ -12,7 +12,7 @@ export interface SliderProps {
   panelContainerClassName?: string;
   panelClassName?: string;
   isOpen?: boolean;
-  children: Nullable<React.ReactElement>;
+  children: Nullable<React.ReactNode>;
   noBackdrop?: boolean;
   backdropClicked?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   onOpen?: (node: HTMLElement, isAppearing: boolean) => void;
